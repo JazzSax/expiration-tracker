@@ -1,25 +1,67 @@
 {
   "expo": {
-    "name": "expiration-tracker",
+    "name": "Expiration Tracker",
     "slug": "expiration-tracker",
     "version": "1.0.0",
+    "scheme": "expirationtracker",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.expirationtracker.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Scan a product barcode so the app can recognise it next time you receive a shipment."
+      }
     },
     "android": {
+      "package": "com.expirationtracker.app",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#EFF1EA",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
+      "permissions": [
+        "CAMERA",
+        "POST_NOTIFICATIONS",
+        "SCHEDULE_EXACT_ALARM"
+      ],
       "predictiveBackGestureEnabled": false
     },
     "web": {
+      "bundler": "metro",
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-sqlite",
+      "expo-font",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Scan a product barcode so the app can recognise it next time you receive a shipment."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "color": "#8E1F2F"
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#EFF1EA",
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 180
+        }
+      ],
+      "@react-native-community/datetimepicker"
+    ],
+    "experiments": {
+      "typedRoutes": true
     }
   }
 }
